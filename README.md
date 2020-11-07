@@ -30,7 +30,7 @@ az group create --location eastus --name react-azure-docker-rg
 az acr create --name reactazuredockeracr --resource-group react-azure-docker-rg --sku standard --admin-enabled true
 az acr login --name reactazuredockeracr
 docker push reactazuredockeracr.azurecr.io/samples/react-azure-docker-img
-az appservice plan create --name react-azure-docker-sp --resource-group react-azure-docker-rg --location eastus
+az appservice plan create --name react-azure-docker-sp --resource-group react-azure-docker-rg --location eastus --is-linux
 az webapp create --name react-azure-docker-wa --resource-group react-azure-docker-rg --plan react-azure-docker-sp --deployment-container-image-name reactazuredockeracr.azurecr.io/samples/react-azure-docker-img:latest
 az webapp identity assign --resource-group react-azure-docker-rg --name react-azure-docker-wa --query principalId --output tsv
 az account show --query id
